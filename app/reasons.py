@@ -12,3 +12,10 @@ REASONS = {
 }
 
 REASONS.update({'ESTATE_TITLE': '产权定义无效', 'ESTATE_SHARE': '产权份额不符', 'ESTATE_KIND': '议案类别无效', 'ESTATE_BALLOT': '表决票无效', 'ESTATE_CONFLICT': '表决票冲突', 'DATE': '日期格式无效', 'REV_BLOCKED': '较新来源尚未采信'})
+
+REASONS.update({
+    'CONTRACT_CONFLICT': '合同议案重复登记', 'BALANCE_CONFLICT': '楼栋余额重复登记',
+    'BALANCE_MISSING': '楼栋缺资金余额', 'BALANCE_UNKNOWN': '余额表存在未知楼栋',
+    'SCOPE_UNKNOWN': '受益楼栋不在房产台账', 'DISBURSE_BLOCKED': '请款条件不满足，整批退回',
+    'BATCH_UNKNOWN': '没有此请款批次',
+})

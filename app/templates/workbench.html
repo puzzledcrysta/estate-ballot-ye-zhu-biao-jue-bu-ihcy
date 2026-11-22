@@ -59,6 +59,25 @@
       <div class="panel__head"><h2>户与面积双计</h2><span class="num" id="evidence-key"></span></div>
       <div class="panel__body" id="signal" aria-live="polite"><p class="empty">选择一条复算记录</p></div>
     </article></div>
+    <section class="panel disbursement" id="disburse-panel" hidden>
+      <div class="panel__head"><h2>维修资金请款分账</h2><span class="num" id="disburse-run"></span></div>
+      <form id="disburse-form" class="panel__body">
+        <div class="actions"><button type="button" id="disburse-sample" class="btn">载入分账样例</button>
+          <button type="button" id="disburse-preview" class="btn btn--primary">试算分账</button>
+          <button type="button" id="disburse-publish" class="btn btn--primary" hidden>发布请款批次</button></div>
+        <details id="disburse-imports" open><summary>合同 / 房产台账 / 分栋余额（CSV）</summary>
+          <label>维修合同 <input id="contracts-file" type="file" accept=".csv,text/csv"></label>
+          <textarea id="contracts-csv" aria-label="维修合同 CSV" rows="3"></textarea>
+          <label>房产台账 <input id="estates-file" type="file" accept=".csv,text/csv"></label>
+          <textarea id="estates-csv" aria-label="房产台账 CSV" rows="3"></textarea>
+          <label>分栋资金余额 <input id="balances-file" type="file" accept=".csv,text/csv"></label>
+          <textarea id="balances-csv" aria-label="分栋余额 CSV" rows="2"></textarea>
+        </details>
+        <output id="disburse-notice" role="status"></output>
+      </form>
+      <div id="disburse-kpis" class="kpis disburse-kpis" hidden></div>
+      <div class="scroll" id="disburse-data"><p class="empty">先运行一份计票批次，再试算分账</p></div>
+    </section>
       </main>
       <footer class="statusbar"><span id="state" role="status">等待输入</span><a href="/openapi.json">接口</a><span>UTC</span></footer>
     </div>

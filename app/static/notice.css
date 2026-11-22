@@ -129,3 +129,17 @@ td details { min-width: 5em; margin-top: 4px; color: var(--muted); border-left: 
   .scroll, #signal { overflow: visible; max-height: none; }
   thead { display: table-header-group; }
 }
+
+/* 请款分账 */
+.disbursement { margin-top: var(--gap); }
+.disburse-kpis { grid-template-columns: repeat(5, minmax(0, 1fr)); margin: var(--pad); }
+.disburse-section { padding: var(--pad); border-top: 3px double var(--line-strong); }
+.disburse-section h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent); }
+.disburse-section .state { font-size: 12px; }
+strong.problem, .empty.problem { color: var(--bad); }
+#disburse-form details { margin-top: 9px; padding: 5px 7px; border: 1px solid #c5ac67; border-radius: 4px; }
+#disburse-form label { display: block; margin-block: 9px 4px; }
+#disburse-notice { display: block; color: var(--muted); margin-top: 6px; overflow-wrap: anywhere; }
+#disburse-notice:empty { display: none; }
+#disburse-data { max-height: none; }
+#disburse-data .scroll { max-height: none; }

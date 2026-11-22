@@ -50,8 +50,23 @@ class Review(BaseModel):
     note: str = Field(default='',max_length=500)
 
 
+class Disburse(BaseModel):
+    run_id: str = Field(min_length=1, max_length=128)
+    contracts: CsvText | None = None
+    contracts_base64: EncodedCsv | None = None
+    estates: CsvText | None = None
+    estates_base64: EncodedCsv | None = None
+    balances: CsvText | None = None
+    balances_base64: EncodedCsv | None = None
+
+    def file(self, name):
+        return input_bytes(getattr(self, name), getattr(self, f'{name}_base64'),
+                           SAMPLE_ROOT / f'{name}.csv')
+
+
 def read_sample(name):
-    choices = {'shift':'shift.csv','external':'external.csv'}
+    choices = {'shift':'shift.csv','external':'external.csv',
+               'contracts':'contracts.csv','estates':'estates.csv','balances':'balances.csv'}
     if name not in choices:
         raise DataError('DEMO_UNKNOWN','没有此样例',404)
     return SAMPLE_ROOT.joinpath(choices[name]).read_bytes()

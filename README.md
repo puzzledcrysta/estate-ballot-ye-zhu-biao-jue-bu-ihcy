@@ -18,6 +18,7 @@ docker compose up --build
 2. 在「冲突票夹」区分冲突、业务拒绝、重传与旧版本。
 3. 打开「份额计票」并点击任意记录的「查看依据」。
 4. 在「公示勾稽」检查金额或用量差异。通过「议案记录」复算原文件，通过「计票底稿」提交意见并下载证据。
+5. 在「请款分账」选定计票批次，上传维修合同、房产台账与分栋余额后试算：查看每栋每户承担、业主跨栋汇总与余额不足楼栋；只有通过且对账无差的议案出账，整批对平且余额足额方可发布，同批重跑不新增请款。
 
 接口定义见 `/openapi.json`。字段、允许区间及算例见 [数据字典](docs/DATA-DICTIONARY.md)，模块和回归测试见 [测试登记](docs/DEPTH.md)。
 
@@ -28,4 +29,4 @@ docker compose config --quiet
 docker compose exec -T app pytest -q
 ```
 
-`sample_data/shift.csv` 是班次数据，`sample_data/external.csv` 是独立账样例。`cases.csv` 固定业务反例，`legacy.csv` 和 `truncated.csv` 用于验证历史格式与断行。
+`sample_data/shift.csv` 是班次数据，`sample_data/external.csv` 是独立账样例。`cases.csv` 固定业务反例，`legacy.csv` 和 `truncated.csv` 用于验证历史格式与断行。`contracts.csv`、`estates.csv`、`balances.csv` 是请款分账的合同、房产台账与分栋余额样例（默认 2 栋余额不足，整批拦截；调高 2 栋余额后可发布）。

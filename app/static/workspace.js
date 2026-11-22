@@ -1,5 +1,6 @@
 import {query, readInput, encodeInput} from './api.js';
 import {el, evidence, table} from './table.js';
+import {showDisburse} from './disburse.js';
 
 const byId = id => document.getElementById(id);
 const settings = JSON.parse(byId('settings').textContent);
@@ -106,6 +107,17 @@ async function render() {
   const stage = selected;
   byId('phase').textContent = settings.tabs[stage];
   byId('review').hidden = true;
+  const isDisburse = stage === 'disburse';
+  document.querySelector('.grid').hidden = isDisburse;
+  byId('disburse-panel').hidden = !isDisburse;
+  if (isDisburse) {
+    for (const link of links) {
+      if (link.dataset.module === stage) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    }
+    showDisburse(result?.manifest.run_id || null);
+    return;
+  }
   for (const link of links) {
     if (link.dataset.module === stage) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
